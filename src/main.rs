@@ -5,7 +5,7 @@ fn main() {
     print!("type the floating value : ");
     let i: f32 = read!();
     let num: f32 = i;
-    let exponent: i32 = unsafe { num.to_int_unchecked() };
+    let exponent: i32 = num.round() as i32;
     let fraction: f32 = num.fract();
     let mut binary_frac_vec: Vec<i32> = vec![];
     let mut oct_frac_vec: Vec<i32> = vec![];
@@ -19,11 +19,8 @@ fn main() {
 fn cal(mut frac: f32, frac_vec: &mut Vec<i32>, oprator: f32) {
     while frac != 0.0 {
         frac = frac * oprator;
-
-        let x: i32 = unsafe { frac.to_int_unchecked() };
-
+        let x: i32 = frac.floor() as i32;
         frac_vec.push(x);
-
         frac = frac.fract();
     }
 }
